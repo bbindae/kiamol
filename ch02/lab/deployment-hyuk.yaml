@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ch2-deployment
+  labels:
+    app: ch2-web
+spec:
+  selector:
+    matchLabels:
+      app: ch2-web
+  template:
+    metadata:
+      labels:
+        app: ch2-web
+    spec:
+      containers:
+      - name: ch2-web
+        image: kiamol/ch02-whoami
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+          
